@@ -1,0 +1,33 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button>
+      <ion-icon slot="end" class="profile_icon" ios="ellipsis-horizontal" md="person-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Products</ion-title>
+</ion-toolbar>
+
+<ion-content>
+  <ion-grid no-padding no-margin>
+    <ion-row>
+      <ion-col size="6" *ngFor="let products of product">
+        <ion-card>
+          <ion-card-header>
+            <img *ngIf="products?.hasOwnProperty('imagePath')" [src]="products?.imagePath">
+            <img *ngIf="!products?.hasOwnProperty('imagePath')" src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
+          </ion-card-header>
+        
+          <ion-card-content>
+            <h3>{{products?.productName}}</h3>
+            <h4>Seller: <b>{{products?.seller}}</b></h4>
+            <ion-button shape="round" size="small" (click)="deleteProduct(products?._id)">Delete</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
