@@ -1,9 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>addProduct</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button>
+      <ion-icon slot="end" class="profile_icon" ios="ellipsis-horizontal" md="person-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 
-<ion-content>
+  <ion-title>Add Product</ion-title>
+</ion-toolbar>
+<!-- _id: mongoose.Schema.Types.ObjectId,
+    productName: String,
+    category: String,
+    desc: String,
+    price: String,
+    seller: String,
+    imagePath: String,
+    cloudinary_id:String -->
+
+<ion-content class="content">
+
+  <form [formGroup]="productFilled">
+    <ion-input placeholder="Enter Product Name" formControlName="productName" [(ngModel)]="product.name"></ion-input>
+
+    <ion-select placeholder="Select category" formControlName="category" [(ngModel)]="product.category">
+      <ion-select-option value="brown">Brown</ion-select-option>
+      <ion-select-option value="blonde">Blonde</ion-select-option>
+      <ion-select-option value="black">Black</ion-select-option>
+      <ion-select-option value="red">Red</ion-select-option>
+    </ion-select>
+
+    <ion-input placeholder="Enter Description" formControlName="desc" [(ngModel)]="product.description"></ion-input>
+
+    <ion-input placeholder="Enter Product Price" formControlName="price" [(ngModel)]="product.price"></ion-input>
+
+    <ion-input placeholder="Enter Product Seller" formControlName="seller" [(ngModel)]="product.seller"></ion-input>
+    <ion-input placeholder="Enter Product Price"  formControlName="imagePath" [(ngModel)]="product.imagepath"></ion-input>
+    <ion-input placeholder="Enter Product Price"  formControlName="cloudinary_id" [(ngModel)]="product.cloudinaryid"></ion-input>
+    <p>
+      Choose product image
+    </p>
+
+    <ion-input type="file" accept="image/gif, image/jpeg, image/png" (change)="onFileSelected($event)"></ion-input>
+
+    <!-- <img [src]="product?.photos"/> -->
+
+    <div class="btn-div">
+      <ion-button shape="round" (click)="addProduct()">Add Product</ion-button>
+    </div>
+  </form>
 
 </ion-content>

@@ -18,4 +18,8 @@ export class HomePage implements OnInit {
     console.log('products page')
   }
 
+  addProduct(){
+    this.router.navigateByUrl('/add-product')
+  }
+
 }

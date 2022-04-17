@@ -34,9 +34,10 @@ export class ProductsPage implements OnInit {
     console.log(deleteUrl);
     this.http.delete(deleteUrl).subscribe((ok)=>{
       this.loading.dismiss();
-      alert("Deleted Successfully!")
+      alert("Deleted Successfully!");
+      this.getProducts();
     })
-    this.getProducts();
+    
   }
 
   async showLoading(){

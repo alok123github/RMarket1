@@ -22,6 +22,7 @@
         
           <ion-card-content>
             <h3>{{products?.productName}}</h3>
+            <h4>Price- <b>{{products?.price}}</b></h4>
             <h4>Seller: <b>{{products?.seller}}</b></h4>
             <ion-button shape="round" size="small" (click)="deleteProduct(products?._id)">Delete</ion-button>
           </ion-card-content>

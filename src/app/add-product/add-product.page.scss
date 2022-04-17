@@ -1,0 +1,34 @@
+
+
+ion-toolbar {
+    --background: coral;
+}
+.content{
+  --padding-end: 10px;
+  --padding-start: 20px;
+  --padding-top: 20px;
+}
+
+.profile_icon {
+    font-size: 100px;
+}
+
+ion-input{
+    margin: 20px 0px;
+    background-color: yellow;
+    border-radius: 20px;
+}
+
+ion-select{
+    background-color: yellow;
+    border-radius: 20px;
+}
+
+.btn-div{
+    text-align: center;
+    ion-button {
+        --background: green;
+        text-transform: none;
+        color: white;
+    }
+}

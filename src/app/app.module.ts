@@ -9,11 +9,12 @@ import { ProductsPage } from './products/products.page';
 import { LoginPage } from './login/login.page';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductPage } from './add-product/add-product.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
