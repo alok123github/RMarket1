@@ -14,12 +14,13 @@ export class HomePage implements OnInit {
   }
 
   gotoProducts(){
-    this.router.navigateByUrl('/products')
-    console.log('products page')
+    this.router.navigateByUrl('/products');
+    console.log('products page');
   }
 
   addProduct(){
-    this.router.navigateByUrl('/add-product')
+    this.router.navigateByUrl('/add-product');
   }
+
 
 }

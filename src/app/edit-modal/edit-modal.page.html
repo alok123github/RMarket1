@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Product</ion-title>
+    <ion-icon name="close-sharp" slot="end" size="large" class="close-icon"(click)="closeModal()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="content">
+
+  <form [formGroup]="productFill">
+    <ion-input placeholder="Enter Product Name" formControlName="productName" [value]="product.name"  [(ngModel)]="product.name"></ion-input>
+
+    <ion-select placeholder="Select category" formControlName="category" [value]="product.category" [(ngModel)]="product.category">
+      <ion-select-option value="brown">Brown</ion-select-option>
+      <ion-select-option value="blonde">Blonde</ion-select-option>
+      <ion-select-option value="black">Black</ion-select-option>
+      <ion-select-option value="red">Red</ion-select-option>
+    </ion-select>
+
+    <ion-input placeholder="Enter Description" formControlName="desc" [value]="product.description" [(ngModel)]="product.description"></ion-input>
+
+    <ion-input placeholder="Enter Product Price" formControlName="price" [value]="product.price" [(ngModel)]="product.price"></ion-input>
+
+    <ion-input placeholder="Enter Product Seller" formControlName="seller" [value]="product.seller" [(ngModel)]="product.seller"></ion-input>
+    <ion-input placeholder="Enter Product Price" disabled formControlName="imagePath" [value]="product.imagepath" [(ngModel)]="product.imagepath">
+    </ion-input>
+    <ion-input placeholder="Enter Product Price" disabled formControlName="cloudinary_id" [value]="product.cloudinaryid" [(ngModel)]="product.cloudinaryid">
+    </ion-input>
+    <p>
+      Choose product image
+    </p>
+
+    <ion-input disabled type="file" accept="image/gif, image/jpeg, image/png" (change)="onFileSelected($event)"></ion-input>
+
+
+    <div class="btn-div">
+      <ion-button shape="round" (click)="updateProduct()">Update Product</ion-button>
+    </div>
+  </form>
+
+
+
+</ion-content>

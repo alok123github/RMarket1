@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AddProductPage } from './add-product/add-product.page';
 import { CartPage } from './cart/cart.page';
+import { EditModalPage } from './edit-modal/edit-modal.page';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
 import { ProductsPage } from './products/products.page';
@@ -13,8 +14,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'home',
-    component:HomePage
+    path: 'home',
+    component: HomePage
   },
   {
     path: 'cart',
@@ -26,13 +27,17 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component:ProductsPage
+    component: ProductsPage
   },
   {
     path: 'add-product',
-    component:AddProductPage
+    component: AddProductPage
+  },
+  {
+    path: 'edit-modal',
+    component:EditModalPage
   }
-  
+
 ];
 
 @NgModule({
@@ -41,4 +46,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

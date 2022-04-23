@@ -10,9 +10,10 @@ import { LoginPage } from './login/login.page';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductPage } from './add-product/add-product.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditModalPage } from './edit-modal/edit-modal.page';
 
 @NgModule({
-  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage],
+  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
