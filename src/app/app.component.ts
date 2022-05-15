@@ -8,10 +8,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home', icon: 'mail' },
     { title: 'All Products', url: '/products', icon: 'paper-plane' },
-    // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Add Products', url: '/add-product', icon: 'add-circle' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}

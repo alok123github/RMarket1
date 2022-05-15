@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+}
+
+ion-toolbar {
+    --background: coral;
+}
+
+.profile_icon {
+    font-size: 100px;
+}
+
+.card-md {
+    border-radius: 10px;
+}
+
+
+ion-card-content {
+    text-align: center;
+
+    h3 {
+        text-align: center;
+        color: green;
+        font-weight: bold;
+    }
+
+    ion-button {
+        --background: red;
+        text-transform: none;
+        color: white;
+    }
+}
+
+.card-header-md {
+    padding: 0;
+}
+
+ion-card-header {
+    img {
+        height: 6rem;
+        width: 100%;
+    }
+}

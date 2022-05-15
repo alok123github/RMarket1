@@ -27,8 +27,8 @@
 
   <div class="heading-content">
     <p class="heading-txt">Shop By Category</p>
-    <ion-button shape="round" size="small" (click)="gotoProducts()">View All</ion-button>
-    <ion-button shape="round" size="small" (click)="addProduct()">Add product</ion-button>
+    <!-- <ion-button shape="round" size="small" (click)="gotoProducts()">View All</ion-button>
+    <ion-button shape="round" size="small" (click)="addProduct()">Add product</ion-button> -->
 
   </div>
 
@@ -36,88 +36,14 @@
 
   <ion-grid no-padding no-margin>
     <ion-row>
-      <ion-col>
-        <ion-card (click)="gotoYoutube()">
+      <ion-col size="4" *ngFor="let allCategories of allCategory">
+        <ion-card (click)="gotoCategoryWiseProducts(allCategories?.category)">
           <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
+            <img [src]="allCategories?.imagePath1">
           </ion-card-header>
         
           <ion-card-content>
-            <h3>Our</h3>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col>
-        <ion-card (click)="gotoYoutube()">
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
-            </ion-card-header>
-        
-          <ion-card-content>
-            <h3>Our</h3>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <h3>Our</h3>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <h3>Our</h3>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <h3>Our</h3>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col>
-        <ion-card (click)="gotoYoutube()">
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title> -->
-            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <h3>Our</h3>
+            <h3>{{allCategories?.category}}</h3>
           </ion-card-content>
         </ion-card>
       </ion-col>

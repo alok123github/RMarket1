@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddProductPage } from './add-product/add-product.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditModalPage } from './edit-modal/edit-modal.page';
+import { CommonServiceService } from './common-service.service';
+import { CategoryWiseProductsPage } from './category-wise-products/category-wise-products.page';
 
 @NgModule({
-  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage],
+  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },CommonServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

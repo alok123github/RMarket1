@@ -38,12 +38,9 @@
       </ion-radio-group>
     </ion-list>
 
-    <ion-select placeholder="Select category" formControlName="category" [(ngModel)]="product.category" *ngIf="categoryRadio==='existing'">
-      <ion-select-option value="brown">Brown</ion-select-option>
-      <ion-select-option value="blonde">Blonde</ion-select-option>
-      <ion-select-option value="black">Black</ion-select-option>
-      <ion-select-option value="red">Red</ion-select-option>
-    </ion-select>
+      <ion-select placeholder="Select category" formControlName="category" [(ngModel)]="product.category" *ngIf="categoryRadio==='existing'">
+        <ion-select-option [value]="allCategories.category" *ngFor="let allCategories of allCategory">{{allCategories.category}}</ion-select-option>
+      </ion-select>
 
     <form [formGroup]="catFilled" *ngIf="categoryRadio==='new'">
       <ion-input placeholder="Enter Category Name" formControlName="category" [(ngModel)]="cat.category"></ion-input>

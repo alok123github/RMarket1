@@ -20,6 +20,7 @@ export class AddProductPage implements OnInit {
   tempData: any;
   categoryRadio = "existing";
   tempDataCategory: any;
+  allCategory: any;
 
   product = {
     name: "",
@@ -56,6 +57,7 @@ export class AddProductPage implements OnInit {
   })
 
   ngOnInit() {
+    this.getCategory();
   }
 
   addProduct() {
@@ -116,29 +118,29 @@ export class AddProductPage implements OnInit {
       })
     }
 
+    else {
+      formData.append('file', this.product.photos);
+      formData.append('upload_preset', preset);
+      this.http.post(apiUrl, formData).subscribe(data => {
+        this.tempData = data;
 
+        this.productFilled.patchValue({
+          imagePath: this.tempData.url,
+          cloudinary_id: this.tempData.public_id
+        })
 
-    formData.append('file', this.product.photos);
-    formData.append('upload_preset', preset);
-    this.http.post(apiUrl, formData).subscribe(data => {
-      this.tempData = data;
-
-      this.productFilled.patchValue({
-        imagePath: this.tempData.url,
-        cloudinary_id: this.tempData.public_id
-      })
-
-      this.http.post('https://rbazarapi.herokuapp.com/product/', this.productFilled.value).subscribe(res => {
-        console.log(res);
-        this.loading.dismiss();
-      }), error => {
+        this.http.post('https://rbazarapi.herokuapp.com/product/', this.productFilled.value).subscribe(res => {
+          console.log(res);
+          this.loading.dismiss();
+        }), error => {
+          this.loading.dismiss();
+          alert("Something went wrong...");
+        }
+      }), err => {
+        console.log("Error" + err);
         this.loading.dismiss();
         alert("Something went wrong...");
       }
-    }), err => {
-      console.log("Error" + err);
-      this.loading.dismiss();
-      alert("Something went wrong...");
     }
 
   }
@@ -162,6 +164,19 @@ export class AddProductPage implements OnInit {
   changeRadio(event) {
     this.categoryRadio = event.detail.value;
     console.log(event.detail.value);
+  }
+
+  getCategory() {
+    this.showLoading()
+    this.http.get('https://rbazarapi.herokuapp.com/category/').subscribe(res => {
+      this.loading.dismiss();
+      this.allCategory = res;
+      this.allCategory=this.allCategory.categoryData;
+      console.log(this.allCategory);
+    }), err => {
+      this.loading.dismiss();
+      alert('Something went wrong...');
+    }
   }
 
 }
