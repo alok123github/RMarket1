@@ -6,6 +6,7 @@ import { CategoryWiseProductsPage } from './category-wise-products/category-wise
 import { EditModalPage } from './edit-modal/edit-modal.page';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
+import { ProductDetailsPage } from './product-details/product-details.page';
 import { ProductsPage } from './products/products.page';
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'category-wise-products',
     component: CategoryWiseProductsPage
+  },
+  {
+    path: 'product-details',
+    component:ProductDetailsPage
   }
 
 ];

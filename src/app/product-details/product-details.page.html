@@ -1,0 +1,50 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button>
+      <ion-icon slot="end" class="profile_icon" ios="ellipsis-horizontal" md="person-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-title>Product Details</ion-title>
+</ion-toolbar>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <img class="product_details_image" [src]="productData?.productData?.imagePath" />
+    </ion-card-header>
+
+    <ion-card-content>
+      <h2 class="productName">{{productData?.productData?.productName}}</h2>
+      <h3 class="priceEntry"><span class="key">Price - </span><b class="price">₹ {{productData?.productData?.price}}</b></h3>
+      <div class="catSel">
+        <ion-button class="category" shape="round" size="small"><ion-icon name="aperture-outline"></ion-icon>&nbsp; {{productData?.productData?.category}}
+        </ion-button>
+        <ion-button class="category" shape="round" size="small"><ion-icon name="pricetag"></ion-icon>&nbsp; {{productData?.productData?.seller}}
+        </ion-button>
+      </div>
+
+      
+      <div class="descEntry">
+        <p><span class="key">Description- </span><span class="desc">{{productData?.productData?.desc}}</span></p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <img class="product_details_image" [src]="productData?.productData?.imagePath" />
+  <h1>{{productData?.productData?.category}}</h1> -->
+
+
+</ion-content>
+
+<ion-footer>
+  <div class="cart_buy">
+    <ion-button class="cart_button" (click)="addCart(productData?.productData?._id)">Add To Cart
+    </ion-button>
+    <ion-button class="buy_button" (click)="buyProduct(productData?.productData?._id)">Buy Now
+    </ion-button>
+  </div>
+</ion-footer>

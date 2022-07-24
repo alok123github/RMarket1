@@ -18,11 +18,20 @@ export class HomePage implements OnInit {
   constructor(private router: Router,
     private loadCtrl: LoadingController,
     private http: HttpClient,
-    private commonService:CommonServiceService) { }
+    private commonService: CommonServiceService) { }
+    productAll: any;
 
 
   ngOnInit() {
     this.getCategory();
+    this.commonService.getAllProd.subscribe(res => {
+      if (res) {
+        this.productAll = res;
+      }
+      else
+        this.getProducts();
+    })
+
   }
 
   gotoProducts() {
@@ -47,6 +56,7 @@ export class HomePage implements OnInit {
       this.loading.dismiss();
       this.allCategory = res;
       this.allCategory = this.allCategory.categoryData;
+      this.commonService.getAllCategory(this.allCategory);
       console.log(this.allCategory);
     }), err => {
       this.loading.dismiss();
@@ -54,21 +64,10 @@ export class HomePage implements OnInit {
     }
   }
 
-  // gotoCategoryWiseProducts(category) {
-  //   this.getProducts();
-  //   console.log(this.product);
-  // for(let p of this.product){
-  //   if(p===category){
-  //     this.categoryProducts.push(p);
-  //   }
-  // }
-  // console.log(this.categoryProducts);
-  // }
-
   gotoCategoryWiseProducts(category) {
     this.showLoading();
     this.http.get('https://rbazarapi.herokuapp.com/product').subscribe(data => {
-      this.categoryProducts=[];
+      this.categoryProducts = [];
       this.product = data;
       this.product = this.product.productData;
       for (let p of this.product) {
@@ -83,6 +82,37 @@ export class HomePage implements OnInit {
       this.loading.dismiss();
     })
     this.router.navigateByUrl('/category-wise-products');
+  }
+
+  getPopularProducts(){
+    this.commonService.getAllCat.subscribe(res=>{
+      console.log(res);
+    })
+  }
+
+  getProducts() {
+    this.http.get('https://rbazarapi.herokuapp.com/product').subscribe(data => {
+      this.productAll = data;
+      this.productAll = this.productAll.productData;
+      this.commonService.getAllProducts(this.productAll);
+      console.log(this.productAll);
+    })
+  }
+
+  addCart(cartItem){
+    console.log(cartItem)
+  }
+
+  buyProduct(productId){
+    this.showLoading();
+    console.log(productId)
+    this.http.get('https://rbazarapi.herokuapp.com/product/'+productId).subscribe(data => {
+      
+      console.log(data);
+      this.commonService.setProductDetailsData(data);
+      this.loading.dismiss();
+    })
+    this.router.navigateByUrl('/product-details');
   }
 
 

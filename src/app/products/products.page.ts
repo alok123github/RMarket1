@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { EditModalPage } from '../edit-modal/edit-modal.page';
+import { CommonServiceService } from '../common-service.service';
 
 @Component({
   selector: 'app-products',
@@ -12,13 +13,21 @@ export class ProductsPage implements OnInit {
 
   constructor(private http: HttpClient,
     private loadCtrl: LoadingController,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController,
+    private commonService: CommonServiceService) { }
   product: any;
   loading: any;
   editModal: any;
 
   ngOnInit() {
-    this.getProducts();
+    this.commonService.getAllProd.subscribe(res => {
+      if (res) {
+        this.product = res;
+      }
+      else
+        this.getProducts();
+    })
+
   }
 
   getProducts() {
@@ -26,6 +35,7 @@ export class ProductsPage implements OnInit {
     this.http.get('https://rbazarapi.herokuapp.com/product').subscribe(data => {
       this.product = data;
       this.product = this.product.productData;
+      this.commonService.getAllProducts(this.product);
       console.log(this.product);
       this.loading.dismiss();
     })

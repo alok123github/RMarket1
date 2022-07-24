@@ -53,6 +53,7 @@ ion-slides {
 
 
 ion-card-content {
+    text-align: center;
 
     h3 {
         text-align: center;
@@ -65,10 +66,33 @@ ion-card-content {
     padding: 0;
 }
 
+.buy_button{
+    --background:yellow;
+    --color:red;
+}
+
+.header_button{
+    --background:rgb(89, 233, 243);
+    --color:red;
+}
+
+ion-button{
+    text-transform: none;
+}
+
+.cart_buy{
+    display: flex;
+    justify-content: center;
+}
+
 ion-card-header {
 
     img {
         height: 6rem;
         width: 100%;
     }
+}
+
+.popular{
+    --background: linear-gradient(#c8ef47, #f4f5f8);
 }
