@@ -15,6 +15,8 @@ export class CommonServiceService {
   public _setProdDetails = new BehaviorSubject<any>('');
   public getProdDetails = this._setProdDetails.asObservable();
 
+  public cartData=[];
+
   constructor() { }
   getCatWiseProduct() {
     return this.categoryWiseGetProduct;

@@ -74,8 +74,16 @@
             <div class="cart_buy">
               <ion-button class="buy_button" shape="round" size="small" (click)="buyProduct(products?._id)">Buy Now
               </ion-button>
-              <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id)">+<ion-icon name="cart-outline"></ion-icon>
+              <ion-button *ngIf="!products.hasOwnProperty('count') || products?.count <=0" class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'plus')">+<ion-icon name="cart-outline"></ion-icon>
               </ion-button>
+              
+              <div class="divCartValue" *ngIf="products.hasOwnProperty('count') && products?.count >=1">
+                <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'minus')">-
+                </ion-button>
+                <p>{{products?.count}}</p>
+                <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'plus')">+
+                </ion-button>
+              </div>
             </div>
           </ion-card-content>
         </ion-card>

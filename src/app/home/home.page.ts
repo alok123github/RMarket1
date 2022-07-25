@@ -99,8 +99,35 @@ export class HomePage implements OnInit {
     })
   }
 
-  addCart(cartItem){
-    console.log(cartItem)
+  addCart(cartItem,plusMinus){
+    console.log(plusMinus);
+    this.commonService.getAllProd.subscribe(res => {
+      if (res) {
+        for(let p of res){
+          if(p._id===cartItem){
+            if(plusMinus === 'plus'){
+              if(p.count){
+                p.count++;
+              }
+              else
+              p.count = 1;
+            }
+            if(plusMinus === 'minus'){
+              if(p.count>=1){
+                p.count--;
+              }
+              else
+              p.count = 0;
+              
+            }
+          }
+        }
+      }
+    })
+
+    this.commonService.getAllProd.subscribe(rr=>{
+      console.log(rr);
+    })
   }
 
   buyProduct(productId){
