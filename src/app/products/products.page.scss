@@ -2,7 +2,7 @@
     padding: 0;
 }
 ion-toolbar {
-    --background: coral;
+    --background: yellow;
 }
 
 .profile_icon {
@@ -39,4 +39,19 @@ ion-card-header {
         height: 6rem;
         width: 100%;
     }
+}
+
+.divCartValue{
+    display: flex;
+    align-items: center;
+}
+
+.buy_button{
+    --background:yellow;
+    --color:red;
+}
+
+.cart_buy{
+    display: flex;
+    justify-content: center;
 }

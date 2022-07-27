@@ -13,7 +13,7 @@
 <ion-content>
   <ion-grid no-padding no-margin>
     <ion-row>
-      <ion-col size="6" *ngFor="let products of product">
+      <ion-col size="6" *ngFor="let products of product" class="list">
         <ion-card>
           <ion-card-header>
             <img *ngIf="products?.hasOwnProperty('imagePath')" [src]="products?.imagePath">
@@ -24,8 +24,22 @@
             <h3>{{products?.productName}}</h3>
             <h4>Price- <b>{{products?.price}}</b></h4>
             <h4>Seller: <b>{{products?.seller}}</b></h4>
-            <ion-button shape="round" size="small" (click)="deleteProduct(products?._id)">Delete</ion-button>
-            <ion-button shape="round" size="small" (click)="updateProduct(products?._id)">Update</ion-button>
+            <!-- <ion-button shape="round" size="small" (click)="deleteProduct(products?._id)">Delete</ion-button>
+            <ion-button shape="round" size="small" (click)="updateProduct(products?._id)">Update</ion-button> -->
+            <div class="cart_buy">
+              <ion-button class="buy_button" shape="round" size="small" (click)="buyProduct(products?._id)">Buy Now
+              </ion-button>
+              <ion-button *ngIf="!products.hasOwnProperty('count') || products?.count <=0" class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'plus')">+<ion-icon name="cart-outline"></ion-icon>
+              </ion-button>
+              
+              <div class="divCartValue" *ngIf="products.hasOwnProperty('count') && products?.count >=1">
+                <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'minus')">-
+                </ion-button>
+                <p>{{products?.count}}</p>
+                <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'plus')">+
+                </ion-button>
+              </div>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>
