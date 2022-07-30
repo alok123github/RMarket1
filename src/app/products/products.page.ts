@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
+  cartCount=0;
+  productAllForCart: any;
 
   constructor(private http: HttpClient,
     private loadCtrl: LoadingController,
@@ -100,6 +102,22 @@ export class ProductsPage implements OnInit {
           }
         }
       }
+    })
+
+    this.commonService.getAllProd.subscribe(res => {
+      this.cartCount=0;
+      if (res) {
+        this.productAllForCart = res;
+        for (let p of this.productAllForCart) {
+          if (p.count) {
+            this.cartCount+=p.count;
+          }
+        }
+        console.log(this.cartCount);
+      }
+      else
+        this.cartCount = 0;
+        this.commonService.setCartCountData(this.cartCount);
     })
 
     this.commonService.getAllProd.subscribe(rr=>{

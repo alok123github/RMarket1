@@ -15,15 +15,25 @@ export class HomePage implements OnInit {
   categoryProducts = [];
   product: any;
 
+  productAllForCart:any;
+  cartCount = 0;
+
   constructor(private router: Router,
     private loadCtrl: LoadingController,
     private http: HttpClient,
     private commonService: CommonServiceService) { }
-    productAll: any;
+  productAll: any;
 
 
   ngOnInit() {
-    this.getCategory();
+    this.commonService.getAllCat.subscribe(result => {
+      if (result) {
+        this.allCategory = result;
+      }
+      else
+        this.getCategory();
+    })
+
     this.commonService.getAllProd.subscribe(res => {
       if (res) {
         this.productAll = res;
@@ -84,8 +94,8 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/category-wise-products');
   }
 
-  getPopularProducts(){
-    this.commonService.getAllCat.subscribe(res=>{
+  getPopularProducts() {
+    this.commonService.getAllCat.subscribe(res => {
       console.log(res);
     })
   }
@@ -99,47 +109,70 @@ export class HomePage implements OnInit {
     })
   }
 
-  addCart(cartItem,plusMinus){
+  
+
+  addCart(cartItem, plusMinus) {
     console.log(plusMinus);
     this.commonService.getAllProd.subscribe(res => {
       if (res) {
-        for(let p of res){
-          if(p._id===cartItem){
-            if(plusMinus === 'plus'){
-              if(p.count){
+        for (let p of res) {
+          if (p._id === cartItem) {
+            if (plusMinus === 'plus') {
+              if (p.count) {
                 p.count++;
               }
               else
-              p.count = 1;
+                p.count = 1;
             }
-            if(plusMinus === 'minus'){
-              if(p.count>=1){
+            if (plusMinus === 'minus') {
+              if (p.count >= 1) {
                 p.count--;
               }
               else
-              p.count = 0;
-              
+                p.count = 0;
+
             }
           }
         }
       }
     })
 
-    this.commonService.getAllProd.subscribe(rr=>{
+    this.commonService.getAllProd.subscribe(res => {
+      this.cartCount=0;
+      if (res) {
+        this.productAllForCart = res;
+        for (let p of this.productAllForCart) {
+          if (p.count) {
+            this.cartCount+=p.count;
+          }
+        }
+        console.log(this.cartCount);
+      }
+      else
+        this.cartCount = 0;
+      this.commonService.setCartCountData(this.cartCount);
+    })
+
+    this.commonService.getAllProd.subscribe(rr => {
       console.log(rr);
     })
   }
 
-  buyProduct(productId){
+  buyProduct(productId) {
     this.showLoading();
     console.log(productId)
-    this.http.get('https://rbazarapi.herokuapp.com/product/'+productId).subscribe(data => {
-      
+    this.http.get('https://rbazarapi.herokuapp.com/product/' + productId).subscribe(data => {
+
       console.log(data);
       this.commonService.setProductDetailsData(data);
       this.loading.dismiss();
     })
     this.router.navigateByUrl('/product-details');
+  }
+
+  gotoCart(){
+    console.log('cart')
+    this.router.navigateByUrl('/cart');
   }
 
 
