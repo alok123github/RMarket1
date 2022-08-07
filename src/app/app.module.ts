@@ -15,9 +15,10 @@ import { CommonServiceService } from './common-service.service';
 import { CategoryWiseProductsPage } from './category-wise-products/category-wise-products.page';
 import { CartPage } from './cart/cart.page';
 import { NavigationtoolbarPage } from './navigationtoolbar/navigationtoolbar.page';
+import { ProductDetailsPage } from './product-details/product-details.page';
 
 @NgModule({
-  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage],
+  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage,ProductDetailsPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },CommonServiceService],

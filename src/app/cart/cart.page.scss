@@ -6,7 +6,56 @@ ion-toolbar {
     --background: yellow;
 }
 
+.buy_button{
+    --background:yellow;
+    --color:red;
+}
+
 .divCartValue{
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    width: 18vh;
+}
+
+.wholeCard{
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.leftContent{
+    width: 40%;
+    img{
+        height: 16vh;
+        width: 18vh;
+        padding: 5px;
+        border-radius: 10px;
+    }
+}
+
+.rightContent{
+    width: 60%;
+}
+
+.wholeContent{
+    display: flex;
+}
+
+.shop_now{
+    --background:yellow;
+    --color:red;
+    text-transform: none;
+    font-size: 2.5vh;
+    margin-top: 50px;
+}
+.empty-cart{
+    text-align: center;
+}
+
+.checkout_button {
+    --background: yellow;
+    --color: black;
+    width: 100%;
+    font-size: 2.4vh;
+    height: 7vh;
 }

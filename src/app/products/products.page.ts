@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class ProductsPage implements OnInit {
   cartCount=0;
   productAllForCart: any;
+  cartSub: any;
+  cartSub1: any;
 
   constructor(private http: HttpClient,
     private loadCtrl: LoadingController,
@@ -80,7 +82,7 @@ export class ProductsPage implements OnInit {
 
   addCart(cartItem,plusMinus){
     console.log(plusMinus);
-    this.commonService.getAllProd.subscribe(res => {
+    this.cartSub = this.commonService.getAllProd.subscribe(res => {
       if (res) {
         for(let p of res){
           if(p._id===cartItem){
@@ -104,7 +106,7 @@ export class ProductsPage implements OnInit {
       }
     })
 
-    this.commonService.getAllProd.subscribe(res => {
+    this.cartSub1 = this.commonService.getAllProd.subscribe(res => {
       this.cartCount=0;
       if (res) {
         this.productAllForCart = res;
@@ -120,9 +122,12 @@ export class ProductsPage implements OnInit {
         this.commonService.setCartCountData(this.cartCount);
     })
 
-    this.commonService.getAllProd.subscribe(rr=>{
-      console.log(rr);
-    })
+    if(this.cartSub || this.cartSub1)
+    {
+      this.cartSub.unsubscribe();
+      this.cartSub1.unsubscribe();
+    }
+
   }
 
   buyProduct(productId){

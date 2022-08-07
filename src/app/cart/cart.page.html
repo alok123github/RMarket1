@@ -1,10 +1,35 @@
 <app-navigationtoolbar></app-navigationtoolbar>
 
 <ion-content>
-  <ion-card>
-    <ion-card-content>
-
-    </ion-card-content>
-  </ion-card>
-
+  <div *ngIf="cartTemp<=0" class="empty-cart">
+    <img src="../../assets/imgs/empty2.gif" />
+    <ion-button class="shop_now" shape="round" (click)="gotoProducts()">Shop Now
+    </ion-button>
+  </div>
+  <div *ngFor="let products of cartItems">
+    <ion-card class="wholeCard" *ngIf="products?.count>=1">
+      <ion-card-content>
+        <div class="wholeContent">
+          <div class="leftContent">
+            <img [src]="products?.imagePath" />
+            <div class="divCartValue" *ngIf="products.hasOwnProperty('count') && products?.count >=1">
+              <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'minus')">-
+              </ion-button>
+              <p>{{products?.count}}</p>
+              <ion-button class="buy_button" shape="round" size="small" (click)="addCart(products?._id,'plus')">+
+              </ion-button>
+            </div>
+          </div>
+          <div class="rightContent">
+            <h2>{{products?.productName}}</h2>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
+
+<ion-footer *ngIf="cartTemp>=1">
+    <ion-button class="checkout_button" (click)="checkout()">Proceed To Checkout
+    </ion-button>
+</ion-footer>

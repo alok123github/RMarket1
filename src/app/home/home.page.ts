@@ -17,6 +17,8 @@ export class HomePage implements OnInit {
 
   productAllForCart:any;
   cartCount = 0;
+  cartSub: any;
+  cartSub1: any;
 
   constructor(private router: Router,
     private loadCtrl: LoadingController,
@@ -113,7 +115,7 @@ export class HomePage implements OnInit {
 
   addCart(cartItem, plusMinus) {
     console.log(plusMinus);
-    this.commonService.getAllProd.subscribe(res => {
+    this.cartSub = this.commonService.getAllProd.subscribe(res => {
       if (res) {
         for (let p of res) {
           if (p._id === cartItem) {
@@ -137,7 +139,7 @@ export class HomePage implements OnInit {
       }
     })
 
-    this.commonService.getAllProd.subscribe(res => {
+    this.cartSub1 = this.commonService.getAllProd.subscribe(res => {
       this.cartCount=0;
       if (res) {
         this.productAllForCart = res;
@@ -153,9 +155,15 @@ export class HomePage implements OnInit {
       this.commonService.setCartCountData(this.cartCount);
     })
 
-    this.commonService.getAllProd.subscribe(rr => {
-      console.log(rr);
-    })
+    if(this.cartSub || this.cartSub1)
+    {
+      this.cartSub.unsubscribe();
+      this.cartSub1.unsubscribe();
+    }
+
+    // this.commonService.getAllProd.subscribe(rr => {
+    //   console.log(rr);
+    // })
   }
 
   buyProduct(productId) {
