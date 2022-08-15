@@ -16,9 +16,10 @@ import { CategoryWiseProductsPage } from './category-wise-products/category-wise
 import { CartPage } from './cart/cart.page';
 import { NavigationtoolbarPage } from './navigationtoolbar/navigationtoolbar.page';
 import { ProductDetailsPage } from './product-details/product-details.page';
+import { UserDetailsPage } from './user-details/user-details.page';
 
 @NgModule({
-  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage,ProductDetailsPage],
+  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage,ProductDetailsPage,UserDetailsPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },CommonServiceService],

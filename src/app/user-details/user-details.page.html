@@ -1,15 +1,4 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-menu-button auto-hide="false"></ion-menu-button>
-  </ion-buttons>
-  <ion-buttons slot="primary">
-    <ion-button>
-      <ion-icon slot="end" class="profile_icon" ios="ellipsis-horizontal" md="person-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-
-  <ion-title>User Details</ion-title>
-</ion-toolbar>
+<app-navigationtoolbar></app-navigationtoolbar>
 
 <ion-content>
 
@@ -19,35 +8,41 @@
     </ion-card-header>
 
     <ion-card-content>
-      
-      <div class="input-data">
-        <p>Name</p>
-        <ion-item>
-          <ion-input></ion-input>
-        </ion-item>
-      </div>
-
-      <div class="input-data">
-        <p>Mobile No.</p>
-        <ion-item>
-          <ion-input></ion-input>
-        </ion-item>
-      </div>
-
-      <div class="input-data">
-        <p>Village</p>
-        <ion-item>
-          <ion-input></ion-input>
-        </ion-item>
-      </div>
-
-      <div class="input-data">
-        <p>Landmark</p>
-        <ion-item>
-          <ion-input></ion-input>
-        </ion-item>
-      </div>
+      <form [formGroup]="userDetails">
+        <div class="input-data">
+          <p>Name</p>
+          <ion-item>
+            <ion-input formControlName="userName" [(ngModel)]="user.name"></ion-input>
+          </ion-item>
+        </div>
+  
+        <div class="input-data">
+          <p>Mobile No.</p>
+          <ion-item>
+            <ion-input formControlName="phone" [(ngModel)]="user.phone"></ion-input>
+          </ion-item>
+        </div>
+  
+        <div class="input-data">
+          <p>Village</p>
+          <ion-item>
+            <ion-input formControlName="village" [(ngModel)]="user.village"></ion-input>
+          </ion-item>
+        </div>
+  
+        <div class="input-data">
+          <p>Landmark</p>
+          <ion-item>
+            <ion-input formControlName="landmark" [(ngModel)]="user.landmark"></ion-input>
+          </ion-item>
+        </div>
+      </form>
     </ion-card-content>
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-button class="placeOrderBtn" (click)="placeOrder()">Place Order
+  </ion-button>
+</ion-footer>

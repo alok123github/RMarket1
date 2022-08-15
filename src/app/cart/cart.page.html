@@ -21,7 +21,13 @@
             </div>
           </div>
           <div class="rightContent">
-            <h2>{{products?.productName}}</h2>
+            <h2 class="productName">{{products?.productName}}</h2>
+            <h3 class="priceEntry"><span class="key">Price - </span><b class="price">₹
+                {{products?.price}}</b></h3>
+            <h3 class="priceEntry"><span class="key">Category - </span><b class="value">
+                {{products?.category}}</b></h3>
+            <h3 class="priceEntry"><span class="key">Seller - </span><b class="value">
+                {{products?.seller}}</b></h3>
           </div>
         </div>
       </ion-card-content>
@@ -30,6 +36,6 @@
 </ion-content>
 
 <ion-footer *ngIf="cartTemp>=1">
-    <ion-button class="checkout_button" (click)="checkout()">Proceed To Checkout
-    </ion-button>
+  <ion-button class="checkout_button" (click)="checkout()">Proceed To Checkout
+  </ion-button>
 </ion-footer>

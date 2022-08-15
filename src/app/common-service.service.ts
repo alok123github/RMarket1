@@ -18,6 +18,9 @@ export class CommonServiceService {
   public _setCartCount = new BehaviorSubject<any>('');
   public getCartCount = this._setCartCount.asObservable();
 
+  public _setCheckoutProduct = new BehaviorSubject<any>('');
+  public getCheckoutProduct = this._setCheckoutProduct.asObservable();
+
   public cartData=[];
 
   constructor() { }
@@ -43,5 +46,9 @@ export class CommonServiceService {
 
   setCartCountData(count){
     this._setCartCount.next(count);
+  }
+
+  setCheckoutProductData(chk){
+    this._setCheckoutProduct.next(chk);
   }
 }

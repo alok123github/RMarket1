@@ -112,7 +112,10 @@ export class CartPage implements OnInit {
         }
       }
     })
-    console.log(tempCart);
+    // console.log(tempCart);
+
+    this.commonService.setCheckoutProductData(tempCart);
+    this.router.navigateByUrl('/user-details');
   }
 
   // ngOnDestroy(): void {
