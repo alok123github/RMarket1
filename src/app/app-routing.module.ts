@@ -6,6 +6,7 @@ import { CategoryWiseProductsPage } from './category-wise-products/category-wise
 import { EditModalPage } from './edit-modal/edit-modal.page';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
+import { OrdersPage } from './orders/orders.page';
 import { ProductDetailsPage } from './product-details/product-details.page';
 import { ProductsPage } from './products/products.page';
 import { UserDetailsPage } from './user-details/user-details.page';
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'user-details',
     component: UserDetailsPage
+  },
+  {
+    path: 'orders',
+    component: OrdersPage
   }
 
 ];

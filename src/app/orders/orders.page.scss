@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+}
+
+ion-toolbar {
+    --background: yellow;
+}
+
+.buy_button{
+    --background:yellow;
+    --color:red;
+}
+
+.divCartValue{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 18vh;
+}
+
+.wholeCard{
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.leftContent{
+    width: 40%;
+    img{
+        height: 16vh;
+        width: 18vh;
+        padding: 5px;
+        border-radius: 10px;
+    }
+}
+
+.rightContent{
+    width: 60%;
+    margin-top: 10px;
+}
+
+.wholeContent{
+    display: flex;
+}
+
+.shop_now{
+    --background:yellow;
+    --color:red;
+    text-transform: none;
+    font-size: 2.5vh;
+    margin-top: 50px;
+}
+.empty-cart{
+    text-align: center;
+}
+
+.checkout_button {
+    --background: yellow;
+    --color: black;
+    width: 100%;
+    font-size: 2.4vh;
+    height: 7vh;
+}
+
+
+.productName{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 2.4vh;
+}
+
+.price{
+    font-size: 2.3vh;
+    font-weight: bold;
+}
+
+.value{
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+.desc{
+    font-size: 2vh;
+}
+
+.key{
+    color: green;
+    font-size: 2vh;
+}
+
+.category{
+    --background:yellow;
+    --color:black;
+    text-align: center;
+}
+
+.catSel{
+    justify-content: center;
+}
+
+.badge_count{
+    padding: 6px;
+    position: absolute;
+    background-color: red;
+}
+
+.productName
+{
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 100% center;
+  }
+}
+
+.user-info{
+    text-align: center;
+}

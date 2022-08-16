@@ -1,0 +1,44 @@
+<app-navigationtoolbar></app-navigationtoolbar>
+
+<ion-content>
+  <div *ngFor="let orders of tempOrders">
+    <ion-card class="wholeCard">
+      <ion-card-content>
+        <div class="user-info">
+          <h3 class="priceEntry"><span class="key">Name - </span><b class="price">
+            {{orders?.userData?.userName}}</b></h3>
+          <!-- <p>{{orders?.userData?.userName}}</p> -->
+          <h3 class="priceEntry"><span class="key">Phone - </span><b class="price">
+              {{orders?.userData?.phone}}</b></h3>
+          <h3 class="priceEntry"><span class="key">Landmark - </span><b class="value">
+              {{orders?.userData?.landmark}}</b></h3>
+          <h3 class="priceEntry"><span class="key">Village - </span><b class="value">
+              {{orders?.userData?.village}}</b></h3>
+        </div>
+
+
+        <div class="wholeContent" *ngFor="let ordersData of orders?.orderData">
+          <div class="leftContent">
+            <ion-badge class="badge_count" slot="end">{{ordersData?.count}}</ion-badge>
+            <img [src]="ordersData?.imagePath" />
+          </div>
+          <div class="rightContent">
+            <h2 class="productName">{{ordersData?.productName}}</h2>
+            <h3 class="priceEntry"><span class="key">Price - </span><b class="price">₹
+                {{ordersData?.price}}</b></h3>
+            <h3 class="priceEntry"><span class="key">Category - </span><b class="value">
+                {{ordersData?.category}}</b></h3>
+            <h3 class="priceEntry"><span class="key">Seller - </span><b class="value">
+                {{ordersData?.seller}}</b></h3>
+          </div>
+
+
+          <hr>
+        </div>
+        <ion-button class="checkout_button" (click)="deleteOrder(orders?._id)">Delete Order
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+</ion-content>

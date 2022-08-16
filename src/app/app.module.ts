@@ -17,9 +17,10 @@ import { CartPage } from './cart/cart.page';
 import { NavigationtoolbarPage } from './navigationtoolbar/navigationtoolbar.page';
 import { ProductDetailsPage } from './product-details/product-details.page';
 import { UserDetailsPage } from './user-details/user-details.page';
+import { OrdersPage } from './orders/orders.page';
 
 @NgModule({
-  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage,ProductDetailsPage,UserDetailsPage],
+  declarations: [AppComponent,HomePage,ProductsPage,LoginPage,AddProductPage,EditModalPage,CategoryWiseProductsPage,CartPage,NavigationtoolbarPage,ProductDetailsPage,UserDetailsPage,OrdersPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },CommonServiceService],

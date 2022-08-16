@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { CommonServiceService } from '../common-service.service';
 
 @Component({
@@ -13,8 +15,11 @@ export class UserDetailsPage implements OnInit, OnDestroy {
 
   constructor(private commonService: CommonServiceService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private alertController: AlertController) { }
   orderList:any;
+  tempMessage:any;
 
   user = {
     name: "",
@@ -38,9 +43,36 @@ export class UserDetailsPage implements OnInit, OnDestroy {
   }
 
   placeOrder() {
-    console.log(this.userDetails.value);
-    console.log(this.orderList);
+    let tempOrder={
+      userData:this.userDetails.value,
+      orderData:this.orderList
+    }
+    console.log(tempOrder);
 
+    this.http.post('https://rbazarapi.herokuapp.com/order/', tempOrder).subscribe(res=>{
+      console.log(res);
+      this.tempMessage = res;
+      this.tempMessage=this.tempMessage.message;
+      this.presentAlert(this.tempMessage);
+    })
+
+  }
+
+  async presentAlert(message) {
+    const alert = await this.alertController.create({
+      header: message,
+      buttons: [
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.router.navigateByUrl('/home');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   ngOnDestroy(): void {
