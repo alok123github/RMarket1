@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { CommonServiceService } from '../common-service.service';
 
 @Component({
@@ -12,12 +12,14 @@ import { CommonServiceService } from '../common-service.service';
 })
 export class UserDetailsPage implements OnInit, OnDestroy {
   subscriber: any;
+  loading:any;
 
   constructor(private commonService: CommonServiceService,
     private router: Router,
     private fb: FormBuilder,
     private http: HttpClient,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private loadCtrl:LoadingController) { }
   orderList:any;
   tempMessage:any;
 
@@ -36,6 +38,11 @@ export class UserDetailsPage implements OnInit, OnDestroy {
   })
 
   ngOnInit() {
+    this.getOrderList();
+    
+  }
+
+  getOrderList(){
     this.subscriber = this.commonService.getCheckoutProduct.subscribe(res => {
       console.log(res);
       this.orderList = res;
@@ -43,6 +50,7 @@ export class UserDetailsPage implements OnInit, OnDestroy {
   }
 
   placeOrder() {
+    this.showLoading();
     let tempOrder={
       userData:this.userDetails.value,
       orderData:this.orderList
@@ -53,6 +61,7 @@ export class UserDetailsPage implements OnInit, OnDestroy {
       console.log(res);
       this.tempMessage = res;
       this.tempMessage=this.tempMessage.message;
+      this.loading.dismiss();
       this.presentAlert(this.tempMessage);
     })
 
@@ -73,6 +82,13 @@ export class UserDetailsPage implements OnInit, OnDestroy {
     });
 
     await alert.present();
+  }
+
+  async showLoading() {
+    this.loading = await this.loadCtrl.create({
+      message: "Please wait..."
+    })
+    this.loading.present();
   }
 
   ngOnDestroy(): void {
